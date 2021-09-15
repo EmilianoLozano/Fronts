@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Login</title>
+  </head>
+  <body>
+    <div class= "container-fluid">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="listado.html">Lista Personas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Alta</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="container-fluid bg-primary py-5">
+            <div class="container text-white">
+                <h1 class="display-3"><b>Detalle Usuarios</b></h1>
+                <p class="lead">Lista Personas</p>
+            </div> 
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <table class="table" id="tablaPersonas">
+                <thead>
+                    <tr>
+                        <th data-field="id" scope = "col">#</th>
+                        <th data-field="id" scope = "col">Nombre</th>
+                        <th data-field="id" scope = "col">Apellido</th>
+                        <th data-field="id" scope = "col">Soltero</th>
+                    </tr>
+                </thead>
+                <thead id="cuerpotabla">
+                    
+                </thead>
+            </table>
+        </div>
+    </div>
+
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $.ajax({
+            url: "https://localhost:5001/Persona/ObtenerPersonas",
+            type: "GET",
+            success: function(result) {
+                if(result.ok){
+                    creartabla(result.return);
+                }
+                else{
+                    swal(result.error);
+                }
+            
+            },
+            error: function(error) {
+            console.log(error);}
+            });
+
+            var usuario = localStorage.getItem("emailusuario");
+           swal("HOLA " + usuario);
+
+        });
+        function creartabla(datos){
+            for(var i=0; i < datos.length; i++){
+                var html = "<tr>";
+                    html += "<td>" + datos[i].id + "</td>";
+                    html += "<td>" + datos[i].nombre + "</td>";
+                    html += "<td>" + datos[i].apellido + "</td>";
+                    if(datos[i].soltero){
+                        html += "<td>" + "SI" + "</td>";
+                    }
+                    else{
+                        html += "<td>" + "NO" + "</td>";
+                    }
+                    html += "</tr>";
+                    $("#cuerpotabla").append(html);
+            }
+        }
+    
+    </script>  
+</body>
+</html>
