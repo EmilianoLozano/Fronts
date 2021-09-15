@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Alta de automovil</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="container-fluid bg-primary py-5">
+            <div class="container text-white">
+                <h1 class="display-3"><b>Programación III</b></h1>
+                <p class="lead">2do Parcial</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form id="formulario">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Marca</label>
+                            <select class="form-control" id="cmbDeporte">
+                            </select>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Modelo</label>
+                        <input type="text" class="form-control" id="txtModelo" placeholder="ingrese modelo...">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Año</label>
+                        <input type="text" class="form-control" id="txtAño" placeholder="ingrese año...">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Color</label>
+                        <input type="text" class="form-control" id="txtColor" placeholder="ingrese color...">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Capacidad baul (litros)</label>
+                        <input type="text" class="form-control" id="txtBaul" placeholder="ingrese capacidad...">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Cantidad de personas</label>
+                        <input type="text" class="form-control" id="txtPersonas" placeholder="ingrese cantidad...">
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="button" id="btnRegistrar" class="btn btn-primary">Registrar</button>
+        </form>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script>
+             $(document).ready(function()  {
+            $.ajax(
+                    {
+                        url: "https://localhost:5001/Autos/Marca",
+                        type: "GET",
+                        success: function (result){
+
+                          var html = "<option value='0'>SELECCIONE</option>";
+                            for(let i = 0; i < result.length; i++)
+                            {
+                                
+                                html += "<option value='";
+                                html += result[i].id;
+                                html += "'>";
+                                html += result[i].nombre;
+                                html += "</option>";
+
+                            }
+                            $("#cmbDeporte").append(html);
+                          
+                        },
+                        error: function (result){
+                            alert("error");
+                        }
+                    }
+                );
+            }
+        );
+
+
+        $( "#btnRegistrar" ).click(function() {
+
+            let marca= $("#cmbDeporte").val();
+            let modelo =$("#txtModelo").val();
+            let anio =$("#txtAño").val();
+            let color =$("#txtColor").val();
+            let baul =$("#txtBaul").val();
+            let cantPersonas =$("#txtPersonas").val();
+
+
+            // if(isNaN(valorNumero) || valorNumero===""){
+            // swal("Ingrese numero","Ingrese un valor numerico correcto","error");
+            //  return false;
+            // }
+            
+            if(marca == 0 || modelo=="" || anio=="" || color=="" || baul=="" || cantPersonas==""){
+                swal("Ingrese todos los datos","","error");
+            }
+           
+            else if(isNaN(baul)){
+                 swal("Ingrese capacidad baul valido","Ingrese un valor numerico correcto","error");
+                return false;
+            }
+            else if(isNaN(anio)){
+                 swal("Ingrese año valido","Ingrese un valor numerico correcto","error");
+                return false;
+            }
+            else if(isNaN(cantPersonas)){
+                 swal("Ingrese una cantidad de personas","Ingrese un valor numerico correcto","error");
+                return false;
+            }
+            
+            else{
+                realizarAlta(marca,modelo,anio,color,baul,cantPersonas);
+            }
+        });
+
+        function realizarAlta(marca,modelo,anio,color,baul,cantPersonas){
+            comando= {  
+                "idMarca": marca,
+                "modelo": modelo,
+                "año":anio,
+                "color":color,
+                "capBaul":baul,
+                "cantPersonas":cantPersonas
+                
+            };
+        
+        $.ajax({
+
+            url:"https://localhost:5001/Autos/Alta",
+            type:"POST",
+            dataType:"json",
+            contentType:"application/json",
+            data: JSON.stringify(comando),  
+            success: function(result) {
+                if(result.ok){
+
+                   swal("auto cargado con exito", "" , "success");
+                   document.getElementById("formulario").reset();
+                }
+                else{
+                  swal(result.error);
+                }
+            
+            },
+            error: function(error) {
+            console.log(error);
+            }
+        });
+      
+    }
+
+             
+        </script>
+
+
+
+
+
+
+</body>
+
+</html>

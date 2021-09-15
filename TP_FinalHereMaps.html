@@ -1,0 +1,214 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- HERE JavaScript Libs & Style Sheets-->
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+    <!-- HERE JavaScript Libs & Style Sheets end-->
+    <title>TP Here Maps</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+  
+  <body style="background-color: darkslategray;">
+
+    <div class="container-fluid" style="background-color: mintcream;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#" >Bienvenidos</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#Mis datos">Caratula<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#Boton api">Boton</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#Mapa">Mapa</a>
+                </li>
+               
+              </ul>
+            </div>
+          </nav>
+    </div>
+   
+    <section class="bg-success" id="Mis datos" >
+
+        <div class="container-fluid ">
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-6" style="margin-top: 75px;">
+
+                    <h3 ><strong> Apellido: Lozano</strong></h3>
+                    <h3> <strong>Nombre: Emiliano</strong></h3>
+                    <h3> <strong>Curso: 2w2</strong></h3>
+
+                </div>
+                
+                <div class="col-lg-4 col-md-4 col-sm-6" style="margin-top: 50px;">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/HERE_logo.svg/245px-HERE_logo.svg.png" class="img-fluid" alt="Responsive image">
+                </div>
+                
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/UTN_logo.jpg" class="img-fluid" alt="Responsive image">
+                    
+                </div>
+            </div>
+
+
+        </div>
+
+       
+    </section>
+
+     <br>
+    <h1 style="text-align: center; color:blue">Tecnologias usadas</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+
+
+            </div>
+            <div class="col-8">
+                <div class="card-group">
+                    <div class="card">
+                      <img class="card-img-top" src="https://i.pinimg.com/originals/26/cd/2e/26cd2e5082f1aeb9e8afc52f6a6c7e2e.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Javascript</h5>
+                       
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img class="card-img-top" src="https://www.loopeando.com/wp-content/uploads/2016/11/html5.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">HTML</h5>
+                        
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img class="card-img-top" src="https://cursos.mejorcodigo.net/res/img/article_thumbnails/597f53aea8018.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">AJAX</h5>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+    </div>
+
+    
+    <section id="Boton api">
+
+        <br>
+
+        <div class="container">
+
+            <div class="row">
+
+               <div class=" col-lg-5 col-md-5 col-sm-4 col-4"> 
+
+               </div>
+
+               <div class=" col-lg-2 col-md-5 col-sm-2 col-2"> 
+
+                <button type="button" id="btn" class="btn btn-danger" style="width: 200px; height: 80px;">CONSULTAR API</button>
+    
+            </div> 
+
+               <div class=" col-lg-5 col-md-5 col-sm-6 col-6"> 
+
+                </div> 
+
+            </div>
+        </div>
+            <br>
+    </section>
+    
+    
+    <section id="Mapa">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+
+                </div>
+                <div class="col-lg-7 col-md-6 col-sm-10 col-8">
+                    <div style="width: 54vw;height: 50vh;" id="mapContainer"></div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-2 col-2">
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+<br>
+
+    <div class="container-fluid ">
+      <img src="https://nokiamob.net/wp-content/uploads/2020/02/HERE-WeGo.png"style="width:1400px" class="img-fluid" alt="Responsive image">
+    
+
+         
+  </div>
+ 
+
+<!--   
+
+      <div style="background-image: url(  https://imagekit.androidphoria.com/wp-content/uploads/Here-WeGo.jpg);"> 
+    
+     -->
+  
+
+ 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="mapa.js"></script>
+    <script src="datos.js"></script>
+   
+
+
+
+
+
+
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
